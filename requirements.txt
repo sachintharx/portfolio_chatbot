@@ -1,0 +1,12 @@
+Django>=5.2.3
+djangorestframework
+django-cors-headers
+faiss-cpu
+numpy
+requests
+python-dotenv
+huggingface_hub
+langchain-community
+sentence-transformers
+gunicorn
+whitenoise
