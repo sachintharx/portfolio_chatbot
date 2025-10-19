@@ -72,7 +72,7 @@ const formatMessage = (content: string) => {
     }
 
     // Check for bullet points (starting with * or -)
-    const bulletMatch = trimmedLine.match(/^[\*\-]\s+(.+)$/);
+    const bulletMatch = trimmedLine.match(/^[*-]\s+(.+)$/);
     if (bulletMatch) {
       const bulletContent = bulletMatch[1];
 
