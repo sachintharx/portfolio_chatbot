@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavinda's AI - Simple Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .response-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            min-height: 100px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .response-box.loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .response-content {
+            color: #333;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .response-content strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .quick-questions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quick-btn {
+            padding: 8px 16px;
+            background: #f0f0f0;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .api-status.offline {
+            background: #ffebee;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4caf50;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.offline {
+            background: #f44336;
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Kavinda's AI Assistant</h1>
+        <p class="subtitle">Powered by Netlify Functions + Google Gemini</p>
+
+        <!-- API Status -->
+        <div id="apiStatus" class="api-status">
+            <div class="status-dot"></div>
+            <span>Checking API status...</span>
+        </div>
+
+        <!-- Quick Questions -->
+        <div class="quick-questions">
+            <button class="quick-btn" onclick="askQuestion('What projects have you worked on?')">
+                📂 Projects
+            </button>
+            <button class="quick-btn" onclick="askQuestion('Tell me about your skills')">
+                💡 Skills
+            </button>
+            <button class="quick-btn" onclick="askQuestion('What is your education?')">
+                🎓 Education
+            </button>
+            <button class="quick-btn" onclick="askQuestion('How can I contact you?')">
+                📧 Contact
+            </button>
+        </div>
+
+        <!-- Input -->
+        <div class="input-group">
+            <input 
+                type="text" 
+                id="questionInput" 
+                placeholder="Ask me anything about Kavinda..."
+                onkeypress="handleKeyPress(event)"
+            >
+        </div>
+
+        <!-- Send Button -->
+        <button onclick="sendQuestion()" id="sendBtn">
+            Send Question
+        </button>
+
+        <!-- Response Box -->
+        <div id="responseBox" class="response-box" style="display: none;">
+            <div id="responseContent" class="response-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // 🔧 CONFIGURATION
+        // ============================================
+        // REPLACE THIS with your actual Netlify site URL!
+        const API_BASE_URL = 'https://kavindabot.netlify.app/.netlify/functions';
+        
+        // For local testing with netlify dev:
+        // const API_BASE_URL = 'http://localhost:8888/.netlify/functions';
+
+        // ============================================
+        // 🚀 API FUNCTIONS
+        // ============================================
+
+        // Check if API is online
+        async function checkAPIStatus() {
+            const statusDiv = document.getElementById('apiStatus');
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                const data = await response.json();
+                
+                if (data.status === 'OK') {
+                    statusDiv.innerHTML = `
+                        <div class="status-dot"></div>
+                        <span>✅ API is online and ready</span>
+                    `;
+                } else {
+                    throw new Error('API not responding correctly');
+                }
+            } catch (error) {
+                statusDiv.className = 'api-status offline';
+                statusDiv.innerHTML = `
+                    <div class="status-dot offline"></div>
+                    <span>⚠️ API is offline. Please check the URL in the code.</span>
+                `;
+                console.error('API Status Error:', error);
+            }
+        }
+
+        // Send message to AI
+        async function sendMessageToAI(message) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        conversationHistory: []
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    return data.message;
+                } else {
+                    throw new Error(data.error || 'Failed to get response');
+                }
+            } catch (error) {
+                console.error('Chat API Error:', error);
+                throw error;
+            }
+        }
+
+        // ============================================
+        // 🎨 UI FUNCTIONS
+        // ============================================
+
+        // Show loading state
+        function showLoading() {
+            const responseBox = document.getElementById('responseBox');
+            const responseContent = document.getElementById('responseContent');
+            const sendBtn = document.getElementById('sendBtn');
+
+            responseBox.style.display = 'flex';
+            responseBox.classList.add('loading');
+            responseContent.innerHTML = '<div class="loading-spinner"></div>';
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Thinking...';
+        }
+
+        // Show response
+        function showResponse(message) {
+            const responseBox = document.getElementById('responseBox');
+            const responseContent = document.getElementById('responseContent');
+            const sendBtn = document.getElementById('sendBtn');
+
+            responseBox.classList.remove('loading');
+            responseContent.innerHTML = formatMessage(message);
+            sendBtn.disabled = false;
+            sendBtn.textContent = 'Send Question';
+        }
+
+        // Format message (convert **bold** to HTML)
+        function formatMessage(text) {
+            // Convert **bold** to <strong>
+            let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Convert line breaks
+            formatted = formatted.replace(/\n/g, '<br>');
+            
+            return formatted;
+        }
+
+        // ============================================
+        // 📤 SEND QUESTION
+        // ============================================
+
+        async function sendQuestion() {
+            const input = document.getElementById('questionInput');
+            const question = input.value.trim();
+
+            if (!question) {
+                alert('Please enter a question!');
+                return;
+            }
+
+            showLoading();
+
+            try {
+                const answer = await sendMessageToAI(question);
+                showResponse(answer);
+                input.value = ''; // Clear input
+            } catch (error) {
+                showResponse('❌ Error: ' + error.message + '\n\nPlease make sure:\n1. You updated the API_BASE_URL in the code\n2. Your Netlify site is deployed\n3. GEMINI_API_KEY is set in Netlify environment variables');
+            }
+        }
+
+        // Quick question buttons
+        function askQuestion(question) {
+            document.getElementById('questionInput').value = question;
+            sendQuestion();
+        }
+
+        // Handle Enter key
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendQuestion();
+            }
+        }
+
+        // ============================================
+        // 🎬 INITIALIZE
+        // ============================================
+
+        // Check API status on page load
+        window.addEventListener('load', () => {
+            checkAPIStatus();
+        });
+    </script>
+</body>
+</html>
