@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2 } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, Sparkles, Bot, User } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
+  timestamp?: Date;
 }
+
+// Configuration
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL || "http://localhost:3001/api";
 
 // Helper function to parse inline formatting (bold text)
 const parseInlineFormatting = (text: string) => {
@@ -133,27 +138,8 @@ const Chatbot: React.FC = () => {
   ]);
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [personalData, setPersonalData] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  // Load personal data from text file
-  useEffect(() => {
-    const loadPersonalData = async () => {
-      try {
-        const response = await fetch("/hashara-data.txt");
-        const text = await response.text();
-        setPersonalData(text);
-      } catch (error) {
-        console.error("Error loading personal data:", error);
-        // Fallback to basic data if file fails to load
-        setPersonalData(
-          "Hashara Vidusanka is a Computer Engineering undergraduate at University of Ruhuna, specializing in AI/ML."
-        );
-      }
-    };
-    loadPersonalData();
-  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -180,52 +166,25 @@ const Chatbot: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCBKin5pW_bwMYSNbjLB47WfGEosUzTCIk",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [
-                  {
-                    text: `You are Hashara Vidusanka's portfolio AI assistant. Use the following comprehensive information to answer questions accurately and professionally.
-
-=== PERSONAL DATA ===
-${personalData}
-
-=== RESPONSE FORMAT INSTRUCTIONS ===
-IMPORTANT: Format your responses properly:
-- Use **bold text** for project titles, section headers, and important names (wrap with double asterisks like **this**)
-- Use bullet points (* or -) for listing items
-- Use numbered lists (1., 2., 3.) when showing steps or ordered information
-- Add blank lines between different sections for better readability
-- Keep responses informative but concise
-- When listing projects, format as: **Project Name:** description
-- Always be friendly and professional
-
-User question: ${userMessage}`,
-                  },
-                ],
-              },
-            ],
-          }),
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: userMessage,
+        }),
+      });
 
       const data = await response.json();
 
-      if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
-        const assistantMessage = data.candidates[0].content.parts[0].text;
+      if (data.success && data.message) {
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", content: assistantMessage },
+          { role: "assistant", content: data.message },
         ]);
       } else {
-        throw new Error("Invalid response format");
+        throw new Error(data.error || "Invalid response format");
       }
     } catch (error) {
       console.error("Error sending message:", error);

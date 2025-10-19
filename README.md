@@ -11,11 +11,14 @@ portfolio_chatbot/
 │   ├── package.json     # Backend dependencies
 │   ├── .env.example     # Environment variables template
 │   └── README.md        # Backend documentation
-├── frontend/            # React frontend
-│   ├── Chatbot.tsx      # Main chatbot component
+├── frontend/            # React frontend component
+│   ├── Chatbot.tsx      # Main chatbot component (use this in your React app)
+│   ├── package.json     # Frontend dependencies
+│   ├── tsconfig.json    # TypeScript configuration
 │   └── .env.example     # Frontend environment variables
-├── Chatbot.tsx          # Original combined file (legacy)
-└── hashara-data.txt     # Personal data file
+├── hashara-data.txt     # Personal data file
+├── QUICK_START.md       # Quick start guide
+└── README.md            # This file
 ```
 
 ## Setup Instructions

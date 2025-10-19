@@ -1,0 +1,189 @@
+=== HASHARA VIDUSANKA - PERSONAL DATA ===
+
+FULL NAME: Sachintha Hashara Vidusanka
+CONTACT: sachinthahashara@gmail.com | +94 77 872 5277
+LOCATION: Sri Lanka
+LINKEDIN: https://www.linkedin.com/in/sachintha-hashara-vidusanka-a4289028b
+GITHUB: https://github.com/sachintharx
+
+=== ABOUT ME ===
+I am an undergraduate in the Faculty of Engineering, University of Ruhuna. I am following a Computer Engineering Degree Program (7th semester completed). I would love to apply my knowledge in computer engineering and develop my skills within the industrial context. I am a keen learner who is always willing to learn something new and adapt myself in any new environment, while gaining ample knowledge when working as a team.
+
+=== EDUCATION ===
+- BSc. Hons in Computer Engineering (2021 - Present)
+  Faculty of Engineering, University of Ruhuna
+  Currently in 7th semester
+
+- GCE A/L Examination (2016 - 2018)
+  Dharmaraja College, Kandy
+  Physical Science Stream - Passed
+
+=== WORK EXPERIENCE ===
+
+AI/ML Engineering Trainee at Sri Lanka Telecom (SLT)
+Duration: August 2024 - February 2025
+Location: Head Office, Lotus Road, Colombo 01
+
+Responsibilities and Achievements:
+- Contributed to the development of an AI-powered chatbot for LECO (Lanka Electricity Company), designed to enhance customer interactions and handle solar system installation queries
+- Implemented a Retrieval-Augmented Generation (RAG) architecture, integrating retrieval-based and generative AI techniques for context-aware responses and improved accuracy
+- Developed a multilabel intent classification model using Random Forest and TF-IDF vectorization, optimizing performance with Grid Search and Cross-Validation
+- Utilized FastAPI, LangChain, HuggingFace, FAISS, BM25, NumPy, PyPDFLoader, and Uvicorn for the RAG pipeline
+- Performed data visualization and model performance analysis using Matplotlib and Seaborn
+
+=== TECHNICAL SKILLS ===
+
+AI/ML & Data Science:
+- Deep Learning: CNN, RNN, Autoencoders
+- Retrieval-Augmented Generation (RAG)
+- Multilabel Classification
+- Image Processing
+- Computer Vision
+- Data Visualization
+- Experiment Tracking: MLflow, Optuna
+
+Frameworks & Libraries:
+- TensorFlow, Keras, PyTorch
+- OpenCV
+- scikit-learn
+- Streamlit
+- LangChain
+- HuggingFace
+- FastAPI
+- React.js, Node.js
+- Flutter
+- WPF
+- Spring Boot
+
+Programming Languages:
+- Python (Expert)
+- C++
+- C#
+- Java
+- JavaScript
+- Dart
+- SQL
+
+Technologies & Tools:
+- AWS
+- Docker
+- Terraform
+- DBMS
+- FAISS
+- BM25
+- NumPy
+- Matplotlib
+- Seaborn
+
+Version Control & Collaboration:
+- GitHub
+- Jira
+
+UI/UX Design:
+- Figma
+
+Adobe Software:
+- Adobe Photoshop
+- Adobe Premiere Pro
+- Adobe Audition
+
+Operating Systems:
+- Windows
+- Linux
+
+=== RESEARCH PROJECT (ONGOING) ===
+Title: Hybrid Deep Learning and Optimization-Driven Multipath Flow Routing in Software-Defined Vehicular Networks
+
+Description: Developed a novel framework combining deep learning and optimization techniques for efficient multipath flow routing in highly dynamic vehicular networks. Implemented network simulations using NS3 and designed models addressing link lifetime uncertainty, energy efficiency, and flow interactions in SDVNs.
+
+Skills Used: Machine Learning & Deep Learning, Non-Linear Mathematical Optimization, Network Simulation & Modeling, Algorithm Development & Research
+
+=== PROJECTS ===
+
+1. LECO AI Chatbot (SLT Trainee Project) - 2024-2025
+Description: Developed an AI-powered chatbot for LECO with RAG architecture, integrating retrieval-based and generative AI techniques for context-aware responses. Implemented multilabel intent classification using Random Forest and TF-IDF vectorization, optimizing performance with Grid Search and Cross-Validation.
+Technologies: FastAPI, LangChain, HuggingFace, FAISS, BM25, Python, NumPy, Matplotlib, Seaborn
+Status: Currently being enhanced for WhatsApp integration and live agent handover
+
+2. Traffic Flow Clustering - Group Project (2025)
+Repository: https://github.com/yourusername/Traffic-Flow-Clustering
+Description: Built an AI-powered solution to classify urban traffic flow using Convolutional Autoencoders and clustering on SUMO-simulated data. Implemented MLflow, Optuna, and FastAPI for experiment tracking, optimization, and automated reporting. Designed an interactive Streamlit dashboard integrated with a Gemini-powered chatbot for visual analytics and decision support.
+Technologies: Python, Convolutional Autoencoders, MLflow, Optuna, FastAPI, Streamlit, SUMO, Gemini AI
+Key Features: Automated traffic pattern recognition, real-time clustering, AI-powered analytics dashboard
+
+3. Parking Spot Occupancy Detection - Group Project (2025)
+Repository: https://github.com/yourusername/Parking-Spot-Detection
+Description: Developed a real-time smart parking system using Computer Vision and CNN to classify parking spot availability from video feeds. Applied ROI-based change detection for improved computational efficiency.
+Technologies: Python, OpenCV, NumPy, TensorFlow/Keras, scikit-learn, Matplotlib
+Key Features: Real-time detection, ROI optimization, automated reporting
+
+4. AI-Driven CAPTCHA Detection Model - Group Project (2024)
+Repository: https://github.com/sachintharx/CAPTCHA-Detection-Model
+Description: Developed a robust CAPTCHA recognition system using CNN and RNN with TensorFlow and Keras in Python for automated text extraction from distorted images.
+Technologies: Python, TensorFlow, Keras, CNN, RNN
+Key Features: High accuracy text recognition, distortion handling
+
+5. Potato Disease Classification Model (2024)
+Repository: https://github.com/sachintharx/Potato-Disease-Classification
+Description: Developed a CNN using TensorFlow and Keras to classify potato diseases from leaf images, enabling early detection and treatment recommendations for farmers.
+Technologies: Python, TensorFlow, Keras, CNN, Image Processing
+Key Features: Disease detection, agricultural application
+
+6. Smokers and Drinkers Predictor - Group Project (2023)
+Repository: https://github.com/sachintharx/ML_Project_Group_21
+Research Paper: https://www.researchgate.net/publication/379564822
+Description: Developed a machine learning model using Logistic Regression and SVM in Python to predict individuals' smoking and drinking behavior based on health and lifestyle data.
+Technologies: Python, scikit-learn, Logistic Regression, SVM, Machine Learning
+Achievement: Published research paper
+Key Features: Behavioral prediction, health data analysis
+
+=== CERTIFICATES ===
+
+Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate
+Issued by: Oracle
+Certificate: https://catalog-education.oracle.com/ords/certview/sharebadge?id=9B6D6FC53E24380FB31400B3282F4B640D1A2785D7A9640442A28359C242705B
+Description: Introduces fundamental concepts of AI and ML, cloud infrastructure for AI workloads
+
+=== SOFT SKILLS ===
+- Creativity
+- Teamwork and Collaboration
+- Communication Skills
+- Leadership
+- Problem Solving
+- Time Management
+- Public Speaking
+- Quick Learner
+- Adaptability
+
+=== INTERESTS ===
+- Artificial Intelligence & Machine Learning
+- Deep Learning & Neural Networks
+- Computer Vision
+- Natural Language Processing
+- Research and Development
+- Open Source Contribution
+- Exploring Latest Research Papers
+- Mentoring
+
+=== PROFESSIONAL REFERENCES ===
+
+1. Dr. Nilmantha Wijesekara
+   Senior Lecturer
+   Department of Electrical and Information Engineering
+   Faculty of Engineering, University of Ruhuna
+   Email: nilmantha@eie.ruh.ac.lk
+   Phone: +94 71 06 51 856
+
+2. Mr. Kosala Tennakoon
+   Deputy General Manager
+   Sri Lanka Telecom PLC
+   Lotus Road, Colombo 01
+   Email: kosalasrilanka2@gmail.com
+   Phone: +94 71 68 37 723
+
+=== ADDITIONAL INFORMATION ===
+- Fluent in English and Sinhala
+- Experience in video editing and social media marketing
+- Familiar with Adobe Creative Suite (Photoshop, Premiere Pro, Audition)
+- Active contributor to university projects and group activities
+- Passionate about solving real-world problems through AI/ML solutions
