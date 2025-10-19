@@ -1,0 +1,31 @@
+{
+  "name": "portfolio-chatbot-frontend",
+  "version": "1.0.0",
+  "description": "Frontend chatbot component for portfolio",
+  "main": "Chatbot.tsx",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "chatbot",
+    "react",
+    "component"
+  ],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "dependencies": {
+    "lucide-react": "^0.263.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^5.0.0"
+  }
+}

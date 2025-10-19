@@ -1,0 +1,121 @@
+const express = require('express');
+const cors = require('cors');
+const fs = require('fs').promises;
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Store personal data in memory
+let personalData = '';
+
+// Load personal data on startup
+const loadPersonalData = async () => {
+  try {
+    const dataPath = path.join(__dirname, '..', 'hashara-data.txt');
+    personalData = await fs.readFile(dataPath, 'utf-8');
+    console.log('Personal data loaded successfully');
+  } catch (error) {
+    console.error('Error loading personal data:', error);
+    personalData = "Hashara Vidusanka is a Computer Engineering undergraduate at University of Ruhuna, specializing in AI/ML.";
+  }
+};
+
+// Initialize personal data
+loadPersonalData();
+
+// API Routes
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'OK', message: 'Server is running' });
+});
+
+// Get personal data endpoint
+app.get('/api/personal-data', (req, res) => {
+  res.json({ data: personalData });
+});
+
+// Chat endpoint
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { message, conversationHistory } = req.body;
+
+    if (!message || !message.trim()) {
+      return res.status(400).json({ error: 'Message is required' });
+    }
+
+    // Build the prompt with personal data
+    const prompt = `You are Hashara Vidusanka's portfolio AI assistant. Use the following comprehensive information to answer questions accurately and professionally.
+
+=== PERSONAL DATA ===
+${personalData}
+
+=== RESPONSE FORMAT INSTRUCTIONS ===
+IMPORTANT: Format your responses properly:
+- Use **bold text** for project titles, section headers, and important names (wrap with double asterisks like **this**)
+- Use bullet points (* or -) for listing items
+- Use numbered lists (1., 2., 3.) when showing steps or ordered information
+- Add blank lines between different sections for better readability
+- Keep responses informative but concise
+- When listing projects, format as: **Project Name:** description
+- Always be friendly and professional
+
+User question: ${message}`;
+
+    // Call Google Gemini API
+    const geminiApiKey = process.env.GEMINI_API_KEY || 'AIzaSyCBKin5pW_bwMYSNbjLB47WfGEosUzTCIk';
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+      const assistantMessage = data.candidates[0].content.parts[0].text;
+      res.json({
+        success: true,
+        message: assistantMessage,
+      });
+    } else {
+      throw new Error('Invalid response format from Gemini API');
+    }
+  } catch (error) {
+    console.error('Error in chat endpoint:', error);
+    res.status(500).json({
+      success: false,
+      error: 'An error occurred while processing your request',
+      message: 'Sorry, I encountered an error. Please try again.',
+    });
+  }
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`API endpoints:`);
+  console.log(`  - GET  /api/health`);
+  console.log(`  - GET  /api/personal-data`);
+  console.log(`  - POST /api/chat`);
+});
