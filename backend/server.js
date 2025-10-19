@@ -6,8 +6,17 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// CORS Configuration for production
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? process.env.FRONTEND_URL || '*' // Allow your Netlify domain in production
+    : '*', // Allow all origins in development
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Store personal data in memory

@@ -1,0 +1,15 @@
+# Railway Deployment Configuration
+
+# No configuration needed - Railway auto-detects Node.js
+# This file is optional but can be used for custom settings
+
+# If you need to specify custom settings, uncomment below:
+
+# [build]
+#   builder = "NIXPACKS"
+#   buildCommand = "npm install"
+
+# [deploy]
+#   startCommand = "npm start"
+#   restartPolicyType = "ON_FAILURE"
+#   restartPolicyMaxRetries = 10
