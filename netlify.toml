@@ -10,6 +10,9 @@
   
   # Directory to publish (output)
   publish = "build"
+  
+  # Serverless functions directory
+  functions = "netlify/functions"
 
 # Environment variables (set these in Netlify dashboard)
 # REACT_APP_API_URL = "https://your-backend-url/api"

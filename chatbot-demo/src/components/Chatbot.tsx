@@ -17,8 +17,8 @@ interface Message {
 }
 
 // Configuration
-const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "http://localhost:3001/api";
+// For Netlify deployment, functions are available at /.netlify/functions
+const API_BASE_URL = process.env.REACT_APP_API_URL || "/.netlify/functions";
 
 // Helper function to parse inline formatting (bold text)
 const parseInlineFormatting = (text: string) => {
