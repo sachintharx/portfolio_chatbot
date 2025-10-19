@@ -16,12 +16,12 @@ let personalData = '';
 // Load personal data on startup
 const loadPersonalData = async () => {
   try {
-    const dataPath = path.join(__dirname, '..', 'hashara-data.txt');
+    const dataPath = path.join(__dirname, 'KavindaDetails.txt');
     personalData = await fs.readFile(dataPath, 'utf-8');
-    console.log('Personal data loaded successfully');
+    console.log('Personal data loaded successfully for Kavinda Rajapaksha');
   } catch (error) {
     console.error('Error loading personal data:', error);
-    personalData = "Hashara Vidusanka is a Computer Engineering undergraduate at University of Ruhuna, specializing in AI/ML.";
+    personalData = "Kavinda Rajapaksha is a final year Computer Engineering undergraduate at University of Ruhuna, specializing in cloud data engineering.";
   }
 };
 
@@ -50,7 +50,7 @@ app.post('/api/chat', async (req, res) => {
     }
 
     // Build the prompt with personal data
-    const prompt = `You are Hashara Vidusanka's portfolio AI assistant. Use the following comprehensive information to answer questions accurately and professionally.
+    const prompt = `You are Kavinda Rajapaksha's portfolio AI assistant. Use the following comprehensive information to answer questions accurately and professionally.
 
 === PERSONAL DATA ===
 ${personalData}

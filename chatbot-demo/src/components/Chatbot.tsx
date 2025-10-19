@@ -1,5 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2, Sparkles, Bot, User } from "lucide-react";
+import {
+  MessageCircle,
+  X,
+  Send,
+  Loader2,
+  Sparkles,
+  Bot,
+  User,
+} from "lucide-react";
+import "./Chatbot.css";
 
 interface Message {
   role: "user" | "assistant";
@@ -133,7 +142,7 @@ const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm Hashara's AI assistant. How can I help you today?",
+      content: "Hi! I'm Kavinda's AI assistant. How can I help you today?",
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
@@ -209,76 +218,113 @@ const Chatbot: React.FC = () => {
 
   return (
     <>
-      {/* Chatbot Toggle Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 p-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full shadow-2xl hover:shadow-pink-500/50 hover:scale-110 transition-all duration-300 group"
-        aria-label="Open chatbot"
-      >
-        {isOpen ? (
-          <X size={28} className="group-hover:rotate-90 transition-transform" />
-        ) : (
-          <MessageCircle
-            size={28}
-            className="group-hover:scale-110 transition-transform animate-pulse"
-          />
-        )}
-      </button>
+      {/* Floating Toggle Button */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 z-50 p-4 bg-gradient-to-br from-purple-600 via-pink-600 to-purple-700 text-white rounded-full shadow-2xl hover:shadow-purple-500/50 hover:scale-110 transition-all duration-300 group"
+          aria-label="Open AI Assistant"
+        >
+          <MessageCircle size={28} className="group-hover:scale-110 transition-transform" />
+          <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white animate-pulse"></span>
+        </button>
+      )}
 
-      {/* Chatbot Widget */}
+      {/* Rounded Corner Widget Chat */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-96 h-[600px] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-gray-200 animate-slide-in-right">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-pink-600 to-purple-600 p-6 text-white">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
-                  <MessageCircle size={24} />
+        <div className="chatbot-widget-container">
+          {/* Compact Modern Header */}
+          <div className="chatbot-header">
+            {/* Animated background blobs */}
+            <div className="chatbot-header-blob-1"></div>
+            <div className="chatbot-header-blob-2"></div>
+
+            <div className="chatbot-header-content">
+              <div className="chatbot-header-left">
+                <div className="chatbot-header-avatar-wrapper">
+                  <div className="chatbot-header-avatar">
+                    <Bot size={20} />
+                  </div>
+                  <span className="chatbot-header-avatar-status"></span>
                 </div>
-                <div>
-                  <h3 className="font-bold text-lg">AI Assistant</h3>
-                  <p className="text-xs text-white/80">Ask me about Hashara</p>
+                <div className="chatbot-header-info">
+                  <h3>
+                    AI Assistant
+                    <Sparkles size={14} className="chatbot-icon-sparkle" />
+                  </h3>
+                  <p>
+                    <span className="chatbot-header-status-dot"></span>
+                    Online • Ready to help
+                  </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="hover:bg-white/20 p-2 rounded-full transition-colors"
+                className="chatbot-header-close"
               >
-                <X size={20} />
+                <X size={18} />
               </button>
             </div>
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50">
+          <div className="chatbot-messages-container">
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`flex ${
-                  message.role === "user" ? "justify-end" : "justify-start"
+                className={`chatbot-message ${
+                  message.role === "user" ? "user" : ""
                 }`}
               >
-                <div
-                  className={`max-w-[85%] rounded-2xl px-5 py-4 ${
-                    message.role === "user"
-                      ? "bg-gradient-to-r from-pink-600 to-purple-600 text-white"
-                      : "bg-white text-gray-700 shadow-md border border-gray-200"
-                  }`}
-                >
-                  <div className="text-sm leading-relaxed">
+                {/* Avatar */}
+                <div className={`chatbot-message-avatar ${message.role}`}>
+                  {message.role === "user" ? (
+                    <User size={20} />
+                  ) : (
+                    <Bot size={20} />
+                  )}
+                </div>
+
+                {/* Message Bubble */}
+                <div className={`chatbot-message-bubble ${message.role}`}>
+                  {/* Message Content */}
+                  <div className="chatbot-message-content">
                     {message.role === "assistant" ? (
                       formatMessage(message.content)
                     ) : (
-                      <p className="whitespace-pre-wrap">{message.content}</p>
+                      <p className="whitespace-pre-wrap font-medium">
+                        {message.content}
+                      </p>
                     )}
+                  </div>
+
+                  {/* Timestamp */}
+                  <div className="chatbot-message-timestamp">
+                    {new Date().toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
                   </div>
                 </div>
               </div>
             ))}
+
+            {/* Loading Indicator */}
             {isLoading && (
-              <div className="flex justify-start">
-                <div className="bg-white text-gray-800 rounded-2xl px-4 py-3 shadow-md border border-gray-200">
-                  <Loader2 size={20} className="animate-spin text-pink-600" />
+              <div className="chatbot-loading">
+                <div className="chatbot-loading-avatar">
+                  <Bot size={20} />
+                </div>
+                <div className="chatbot-loading-bubble">
+                  <div className="chatbot-loading-text">
+                    <Loader2 size={18} className="chatbot-icon-spinning" />
+                    <span>AI is thinking...</span>
+                  </div>
+                  <div className="chatbot-loading-dots">
+                    <span className="chatbot-loading-dot"></span>
+                    <span className="chatbot-loading-dot"></span>
+                    <span className="chatbot-loading-dot"></span>
+                  </div>
                 </div>
               </div>
             )}
@@ -286,8 +332,8 @@ const Chatbot: React.FC = () => {
           </div>
 
           {/* Input Area */}
-          <div className="p-4 bg-white border-t border-gray-200">
-            <div className="flex items-center gap-2">
+          <div className="chatbot-input-area">
+            <div className="chatbot-input-wrapper">
               <input
                 ref={inputRef}
                 type="text"
@@ -296,14 +342,42 @@ const Chatbot: React.FC = () => {
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
                 disabled={isLoading}
-                className="flex-1 px-4 py-3 bg-gray-50 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all text-sm disabled:opacity-50"
+                className="chatbot-input"
               />
               <button
                 onClick={sendMessage}
                 disabled={!inputMessage.trim() || isLoading}
-                className="p-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="chatbot-send-button"
               >
-                <Send size={20} />
+                {isLoading ? (
+                  <Loader2 size={18} className="chatbot-icon-spinning" />
+                ) : (
+                  <Send size={18} />
+                )}
+              </button>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="chatbot-quick-actions">
+              <button
+                onClick={() => setInputMessage("Tell me about your skills")}
+                className="chatbot-quick-action skills"
+              >
+                💼 Skills
+              </button>
+              <button
+                onClick={() =>
+                  setInputMessage("What projects have you worked on?")
+                }
+                className="chatbot-quick-action projects"
+              >
+                🚀 Projects
+              </button>
+              <button
+                onClick={() => setInputMessage("Tell me about your education")}
+                className="chatbot-quick-action education"
+              >
+                🎓 Education
               </button>
             </div>
           </div>
