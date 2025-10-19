@@ -14,6 +14,11 @@
   # Serverless functions directory
   functions = "netlify/functions"
 
+# Functions configuration
+[functions]
+  # Include additional files with functions
+  included_files = ["netlify/functions/KavindaDetails.txt"]
+
 # Environment variables (set these in Netlify dashboard)
 # REACT_APP_API_URL = "https://your-backend-url/api"
 

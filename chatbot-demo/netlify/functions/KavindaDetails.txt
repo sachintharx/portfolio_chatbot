@@ -1,0 +1,130 @@
+Hi, I'm
+Kavinda
+Rajapaksha
+I'm a final year Computer Engineering undergraduate at University of Ruhuna. Passionate about cloud data engineering, I work with AWS, Azure, and databases to turn raw data into powerful insights.,,,
+About Me
+Data Engineer & Cloud Enthusiast
+I'm a final year Computer Engineering undergraduate at the University of Ruhuna. My passion lies in cloud data engineering working hands on with AWS, Azure, big data technologies, and both relational and non-relational databases.
+
+From building scalable ETL pipelines to delivering insights from real world datasets, I thrive on solving data challenges and leveraging cloud platforms for innovative solutions. I'm DP-900 Azure certified, skilled in Hadoop, SQL, and always eager to learn and grow in the data engineering space.
+
+Get In Touch
+Download CV
+Cloud Data Engineering
+Building data solutions with AWS, Azure, GCP and modern cloud services.
+
+Big Data & ETL Pipelines
+Experience with Hadoop, MapReduce, SQL, Python, and scalable ETL workflows.
+
+Projects & Freelancing
+Real-world analytics, dashboarding, and a passion for future freelance data engineering.,,,
+
+Summary
+Final year Computer Engineering undergraduate at the University of Ruhuna with a strong focus on
+cloud data engineering. Skilled in developing scalable ETL pipelines and working with cloud platforms,
+especially AWS and Azure. Certified in Microsoft Azure Data Fundamentals (DP-900), with a passion
+for solving data challenges and applying cloud-based solutions to real-world problems while continuously
+learning and advancing in the data engineering field,,,,
+
+,,
+Work Experience
+Software Quality Engineering Intern, Sysco LABS Sri Lanka June 2024 – December 2024
+– Contributed to the Sysco Warehouse Management System (SWMS), an enterprise-scale application
+used across global operations.
+– Performed both manual and automated testing to ensure product quality and reliability.
+– Collaborated with developers and QA team members to identify, reproduce, and resolve issues efficiently.
+– Gained hands-on experience in test automation, software quality processes, and agile team collaboration.,,,
+Projects
+AWS End-to-End Data Warehousing Project GitHub Repo
+Built a medallion-architecture data warehouse using AWS (S3, Glue, Athena, Aurora RDS, EC2). Developed scalable ETL pipelines (raw-to-gold) and Power BI dashboards to deliver actionable business
+insights.
+AWS Serverless Data Pipeline: S3 to S3 ETL with Notifications GitHub Repo
+Implemented a serverless AWS ETL pipeline using S3, Lambda, Glue, SNS, and EventBridge. Automated
+CSV ingestion, transformations, and notifications with monitoring via CloudWatch.
+Air Quality Analysis using Hadoop MapReduce GitHub Repo
+Analyzed large-scale air quality data using Hadoop MapReduce and Python. Developed pipelines for
+PM2.5 trends and pollution hotspots; data processed with Pandas, stored on HDFS, and visualized in
+Power BI dashboards.
+Azure End-to-End Real Time Data P
+Azure End-to-End Real Time Data Pipeline GitHub Repo
+Built real-time ETL pipelines on Azure using Data Factory, Databricks, ADLS, and Synapse Analytics.
+Transformed on-prem SQL data into Bronze, Silver, and Gold layers and visualized KPIs with Power BI.
+Automated daily pipelines for secure, up-to-date business intelligence.
+AI-Powered Business Agent Framework (Final Year Project) GitHub Repo
+Developing a web-based AI framework for SMEs to create custom AI agents. Implemented chatbots with
+LangChain and Vector Databases, designed a RAG pipeline for efficient retrieval, and enabled zero-code,
+secure, and dynamically updating AI agents.
+,,,
+Education
+2021 – Present B.Sc. in Computer Engineering, University of Ruhuna, Faculty of Engineering
+2012 – 2018 Advanced Level (Science Stream), Government Science College, Matale
+2009 – 2012 Ordinary Level, St. Thomas’ College, Matale,,,,Certifications
+DP-900: Microsoft Azure Data Fundamentals (2025)
+Validates foundational knowledge in core data and cloud concepts on Azure, including relational and nonrelational data, analytical vs transactional workloads, Azure compute, storage, networking, and security
+fundamentals. Covers Azure data solutions such as Synapse Analytics, Data Lake, and Power BI, along
+with privacy, compliance, and governance in cloud environments.
+,,,,My Education
+University of Ruhuna logo
+Computer Engineering
+University of Ruhuna
+2021 - present
+Final year undergraduate, specializing in cloud data engineering, databases, and big data technologies.
+
+Govt/Science College, Matale logo
+Advanced Level
+Govt/Science College, Matale
+2012 - 2018
+Focused on science stream with a strong foundation in mathematics and technology.
+
+St. Thomas' College, Matale logo
+Secondary Education
+St. Thomas' College, Matale
+2009 - 2012
+ 
+
+Vijaya College, Matale logo
+Primary Education
+Vijaya College, Matale
+2005 - 2009
+,,,My Experience
+Sysco LABS Logo
+Sysco LABS Sri Lanka
+Sysco Warehouse Management System (SWMS)
+Software Quality Engineering Intern
+June 2024 – December 2024
+As a Software Quality Engineering Intern at Sysco LABS, I contributed to the Sysco Warehouse Management System by performing both manual and automation testing, collaborating closely with the team to deliver a reliable enterprise application.,,,,Recommendations
+Gimhani Wickramasinghe
+Gimhani Wickramasinghe
+Senior Quality Engineer at Sysco LABS
+
+ISTQB-CTFL | ISTQB CTFL-AT
+January 10, 2025
+Worked with Kavinda on the same team
+
+Kavinda joined our team as an intern. During those six months, Kavinda dedicated his full effort to the team. He is a hardworking individual who is curious and eager to learn new things. He is flexible, never says no to a task, and always puts in the effort to try his best. Kavinda is a valuable asset to any company seeking a hardworking young professional with key knowledge in IT fields.
+
+View LinkedIn Recommendation,,,,,Contact Information
+Email
+rdks.kavinda1@outlook.com
+Phone
++94 77 916 0381
+Location
+10/B , Isuru Place, Elwala, Ukuwela, Matale,,,,,,,,
+Social Media linkes:
+https://x.com/KavindaSRaj
+https://github.com/KavindaRajapaksha
+https://www.instagram.com/k__uningas/
+https://web.facebook.com/kavinda.rajapaksha.50/
+https://www.linkedin.com/in/kavinda-s-rajapaksha/,,,
+
+Exam Results:
+Advanced Level:
+combined maths:A
+Physics:B
+Chemistry:B
+Island Rank:636
+District Rank:8 Matale district
+
+Ordinary Level:
+A8 and C1
+Grade 5 scholarship exam(2009):161 and passed

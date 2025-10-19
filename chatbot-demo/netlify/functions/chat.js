@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-// Load personal data
+// Load personal data from the same directory as the function
 let personalData = '';
 try {
-  const dataPath = path.join(__dirname, '..', '..', '..', 'backend', 'KavindaDetails.txt');
+  const dataPath = path.join(__dirname, 'KavindaDetails.txt');
   personalData = fs.readFileSync(dataPath, 'utf-8');
   console.log('Personal data loaded successfully for Kavinda Rajapaksha');
 } catch (error) {

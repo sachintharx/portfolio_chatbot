@@ -9,8 +9,8 @@ exports.handler = async (event, context) => {
   };
 
   try {
-    // Load personal data
-    const dataPath = path.join(__dirname, '..', '..', '..', 'backend', 'KavindaDetails.txt');
+    // Load personal data from the same directory as the function
+    const dataPath = path.join(__dirname, 'KavindaDetails.txt');
     const personalData = fs.readFileSync(dataPath, 'utf-8');
     
     return {
