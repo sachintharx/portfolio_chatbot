@@ -77,9 +77,9 @@ IMPORTANT: Format your responses properly:
 User question: ${message}`;
 
     // Call Google Gemini API
-    const geminiApiKey = process.env.GEMINI_API_KEY || 'AIzaSyCBKin5pW_bwMYSNbjLB47WfGEosUzTCIk';
+    const geminiApiKey = process.env.GEMINI_API_KEY || 'AIzaSyDVesbvbOl7dYrtGcCJy3q86vgiHrg29pc';
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${geminiApiKey}`,
       {
         method: 'POST',
         headers: {
